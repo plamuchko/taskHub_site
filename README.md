@@ -104,5 +104,5 @@ taskhub_frontend  | /docker-entrypoint.sh: Launching Nginx...
 
 ## Връзки
 
-- GitHub: https://github.com/plamuchko/taskhub_system
+- GitHub: https://github.com/plamuchko/taskHub_site
 - Docker Hub (пример): https://hub.docker.com/r/plamendraganov22322/taskhub-backend
