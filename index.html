@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>TaskHub - Канбан Табло</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>📋 Моето Канбан Табло</h2>
+            <button onclick="logout()" class="btn btn-danger btn-sm">Изход</button>
+        </div>
+
+        <div class="card p-3 mb-4 shadow-sm">
+            <form id="taskForm" class="d-flex gap-2">
+                <input type="text" id="taskTitle" class="form-control" placeholder="Нова задача..." required>
+                <button type="submit" class="btn btn-primary">Добави</button>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="bg-white p-3 rounded shadow-sm border-top border-primary border-4">
+                    <h5>📌 За изпълнение (Todo)</h5>
+                    <div id="todo-list" class="mt-3"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-white p-3 rounded shadow-sm border-top border-warning border-4">
+                    <h5>⏳ В процес (Doing)</h5>
+                    <div id="doing-list" class="mt-3"></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="bg-white p-3 rounded shadow-sm border-top border-success border-4">
+                    <h5>✅ Завършени (Done)</h5>
+                    <div id="done-list" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if(!localStorage.getItem('user')) window.location.href = 'login.html';
+
+        async function loadTasks() {
+            const res = await fetch('http://localhost:8000/tasks.php');
+            const tasks = await res.json();
+            
+            document.getElementById('todo-list').innerHTML = '';
+            document.getElementById('doing-list').innerHTML = '';
+            document.getElementById('done-list').innerHTML = '';
+
+            tasks.forEach(task => {
+                const item = `<div class="card p-2 mb-2 bg-light">${task.title}</div>`;
+                document.getElementById(`${task.status}-list`).innerHTML += item;
+            });
+        }
+
+        document.getElementById('taskForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const title = document.getElementById('taskTitle').value;
+            await fetch('http://localhost:8000/tasks.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title })
+            });
+            document.getElementById('taskTitle').value = '';
+            loadTasks();
+        });
+
+        function logout() { localStorage.clear(); window.location.href = 'login.html'; }
+        loadTasks();
+    </script>
+</body>
+</html>

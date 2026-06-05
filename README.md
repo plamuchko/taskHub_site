@@ -68,7 +68,7 @@ taskhub_system/
 1. Отворете терминал и навигирайте до корена на проекта:
 
 ```bash
-cd /mnt/d/Users/user/Desktop/taskhub_system
+cd /mnt/c/Users/user/Desktop/taskhub_system
 ```
 
 2. Изграждане и стартиране със Docker Compose:
@@ -111,5 +111,9 @@ taskhub_frontend  | /docker-entrypoint.sh: Launching Nginx...
 
 ## Връзки
 
-- GitHub: https://github.com/plamuchko/taskHub_site
-- Docker Hub (пример): https://hub.docker.com/r/plamendraganov22322/taskhub-backend
+- GitHub: https://github.com/blagoyt/taskhub_system
+- Docker Hub (пример): https://hub.docker.com/r/ВАШ_ДОКЕР_ПРОФИЛ/taskhub-backend
+
+---
+
+Ако желаете, мога да: 1) променя стила/тона на README, 2) добавя инструкции за разработка и дебъг, 3) интегрирам примерни CURL заявки към API.
