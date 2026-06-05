@@ -102,18 +102,7 @@ taskhub_backend   | AH00558: apache2: Could not reliably determine the server's 
 taskhub_frontend  | /docker-entrypoint.sh: Launching Nginx...
 ```
 
-## Полезни бележки и защита
-
-- Пароли: винаги използвайте `password_hash()` при регистрация и `password_verify()` при логин.
-- CORS: в API отговорите върнете необходимите CORS хедъри (`Access-Control-Allow-Origin`, `Access-Control-Allow-Methods`, `Access-Control-Allow-Headers`) и обработвайте OPTIONS заявки при нужда.
-- Връзка към базата: използвайте услугното име `db` (Docker DNS) вместо IP.
-- Персистентност: уверете се, че `taskhub_data` volume е конфигуриран в `compose.yml`.
-
 ## Връзки
 
-- GitHub: https://github.com/blagoyt/taskhub_system
-- Docker Hub (пример): https://hub.docker.com/r/ВАШ_ДОКЕР_ПРОФИЛ/taskhub-backend
-
----
-
-Ако желаете, мога да: 1) променя стила/тона на README, 2) добавя инструкции за разработка и дебъг, 3) интегрирам примерни CURL заявки към API.
+- GitHub: https://github.com/plamuchko/taskhub_system
+- Docker Hub (пример): https://hub.docker.com/r/plamendraganov22322/taskhub-backend
